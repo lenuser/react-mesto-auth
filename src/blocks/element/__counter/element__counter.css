@@ -1,0 +1,19 @@
+.element__counter {
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-end;
+    padding: 0 0px 0 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding-right: 37px;
+  
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+  
+    color: #000000;
+  }

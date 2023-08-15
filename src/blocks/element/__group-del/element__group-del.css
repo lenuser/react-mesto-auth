@@ -1,0 +1,14 @@
+.element__group-del{
+    max-width: 19px;
+    min-height: 18px;
+    position: absolute;
+    right: 22px;
+    top: 26px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.element__group-del:hover {
+    opacity: 0.6;
+}

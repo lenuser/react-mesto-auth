@@ -1,0 +1,10 @@
+.profile__edit-pl {
+    max-width: 22px;
+    align-self: center;
+}
+
+@media screen and (max-width: 450px) {
+    .profile__edit-pl {
+        max-width: 16px;
+    }
+}

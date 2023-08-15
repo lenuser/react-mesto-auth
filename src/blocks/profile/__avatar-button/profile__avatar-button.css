@@ -1,0 +1,33 @@
+.profile__avatar-button {
+    display: flex;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+  }
+  .profile__avatar-button::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    background-image: url(../../../images/pen.svg);
+    background-position: center;
+    opacity: 0;
+  }
+  @media(hover: hover) and (pointer:fine){
+      .profile__avatar-button:hover::before{
+          opacity: 1;
+          transition: opaciti 0.3s linear;
+          cursor: pointer;
+      }
+  }

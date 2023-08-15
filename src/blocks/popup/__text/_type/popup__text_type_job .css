@@ -1,0 +1,10 @@
+.popup__text_type_job {
+    padding-bottom: 4px;
+   
+
+}
+@media screen and (max-width: 550px) {
+    .popup__text_type_job  {
+        margin-top: 0;
+    }
+}

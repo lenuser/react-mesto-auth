@@ -1,0 +1,19 @@
+.popup__img {
+    max-width: 443px;
+    min-height: 540px;
+    position: relative;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+@media screen and (max-width: 550px) {
+    .popup__img {
+        max-width: 240px;
+        min-height: 299px;
+       
+    }
+}

@@ -1,0 +1,14 @@
+.element__group-hard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px 0 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding-right: 30px;
+}
+
+.element__group-hard:hover {
+    opacity: 0.6;
+}
