@@ -9,9 +9,19 @@
     line-height: 22px;
     color: #000;
     cursor: pointer;
+    background-color: #fff;
+    border: none;
+    margin-top: 300px;
 }
 
 .login__button:hover {
     opacity: 0.6;
     transition: all ease-in-out 0.2s;
   }
+  @media screen and (max-width: 767px){
+    .login__button{
+        width: 260px;
+        height: 46px;
+       
+    }
+}

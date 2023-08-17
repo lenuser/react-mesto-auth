@@ -28,18 +28,20 @@ import { useEffect, useState } from "react";
 
 
 return(
-  <header className={`header ${count !== 0 ? 'page__header_opened' :''}`}>
+  <header className={`header page__header ${count !== 0 ? 'page__header_opened' : ''}`}>
     <img 
     src ={logo}
     alt = "логотип Mesto"
     className="header__logo"
     />
-    {name === 'signup'|| name === 'signin' ?
-    <Link  to ={name === 'signup' ? '/sign-in': '/sign-up'} className='header__link'>
+   
+    {name === 'signup' || name === 'signin' ?
+    <Link  to ={name === 'signup' ? '/sign-in' : '/sign-up'} className='header__link'>
       {name !== 'signup' ? 'Регистрация' : 'Войти'}
     </Link>
   :
   <>
+ 
   <div className={`header__email-container ${count !== 0 ? 'header__email-container_opened' : ''}`}>
     <p className="header__email">{dataUser}</p>
     <Link to={`/sign-in`} className ='header__unlogin' onClick = {onSignOut}>Выйти</Link>

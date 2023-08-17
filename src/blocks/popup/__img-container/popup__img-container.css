@@ -1,0 +1,13 @@
+.popup__img-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 430px;
+    height: 330px;
+    /* padding-top: 60px; */
+    /* padding-bottom: 60px; */
+    row-gap: 32px;
+    margin: 0;
+    /* position: absolute; */
+    /* z-index: 1; */
+}

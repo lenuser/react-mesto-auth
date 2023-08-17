@@ -2,12 +2,12 @@ import Input from '../Input/Input.jsx'
 import useFormValidation from '../../utils/useFormValidation.js'
 import SectionLogin from '../SectionLogin/SectionLogin.jsx'
 
-export default function Register ({name, handeleRegister}) {
+export default function Register ({name, handleRegister}) {
     const { values, error, isValid, isInputValid, handleChange } = useFormValidation()
 
 function onRegister(evt){
     evt.preventDefault()
-    handeleRegister( values.password, values.email )
+    handleRegister( values.password, values.email )
 }
 return (
     <SectionLogin name={name} onSumbit={onRegister} isValid={isValid}>

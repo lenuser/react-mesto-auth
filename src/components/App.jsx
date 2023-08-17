@@ -1,7 +1,7 @@
 import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
-import PopupWithForm from "./PopupWithForm/PopupWithForm.jsx";
+//import PopupWithForm from "./PopupWithForm/PopupWithForm.jsx";
 import ImagePopup from "./ImagePopup/ImagePopup";
 import React,{ useState, useCallback, useEffect } from "react";
 import CurrentUserContext from "../contexts/CurrentUserContext.js";
@@ -9,22 +9,18 @@ import api from "../utils/api.js";
 import EditProfilePopup from "./EditProfilePopup/EditProfilePopup.jsx";
 import EditAvatarPopup from "./EditAvatarPopup/EditAvatarPopup.jsx";
 import AddPlacePopup from "./AddPlacePopup/AddPlacePopup.jsx";
-//import DeletePopup from "./DeletePopup/DeletePopup.jsx";
+import DeletePopup from "./DeletePopup/DeletePopup.jsx";
 
 
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute.jsx";
 import { registration, authorization, getUserData } from "../utils/ayth.js";
 import ProtectedHome from "./ProtectedHome/ProtectedHome.jsx";
-//import SectionLogin from "./SectionLogin/SectionLogin.jsx";
 import InfoTooltip from "./InfoTooltip/InfoTooltip.jsx";
-
-
 import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
-//import  SendContext  from "../contexts/SendContext";
+import  SendContext  from "../contexts/SendContext.js";
 
 
 function App() {
-  //пр12
   const navigate = useNavigate()
   //стейты попапов
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -33,28 +29,24 @@ function App() {
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [isImgPopup, setIsImgPopup] = useState(false);
-
-  //лоудер
   const [isSend, setIsSend] = useState(false);
-
-  //стейты контекста
   const [currentUser, setСurrentUser] = useState({});
+  //пропс для почты
   const [userEmail, setUserEmail] = useState('');
-
   //стейты карточки
   const [card, setCards] = useState([]);
   const [isLoadingCard, setIsLoadingCard] = useState(true);
   const [deleteCardId, setDeleteCardId] = useState(" ");
-
-  //стейты для регистрации и логина пр12
+  //стейт для регистрации и логина 
   const [isSuccessful, setIsSuccessful] = useState(false);
+  //пропс залогинин ли пользователь или нет
   const [loggedIn, setLoggedIn] = useState(false);
+//
   const [isCheckToken, setIsCheckToken] = useState(true);
+  //стейт а открытие sSuccessful
   const [isResultOpenPopup, setIsResuitPopupOpen] = useState(true);
-  //const [isLikes, setIsLikes] = useState(false);
-  //const [count, setCount] = useState(likes.length);
  
-  //переменная состояния попапов пр12
+  //переменная состояния попапов 
   const isOpen = isEditProfilePopupOpen 
   || isAddPlacePopupOpen 
   || isDeletePopupOpen 
@@ -70,7 +62,7 @@ function App() {
     setIsDeletePopupOpen(false);
     setIsResuitPopupOpen(false);
   }, []);
-//12
+//функция по закрытию Escape
 useEffect(() => {
   function closePopupEsc (evt){
   if( evt.key === "Escape"){
@@ -85,11 +77,11 @@ if (isOpen){
 }
 },[isOpen, closeAllPopups])
 
- //12
+//авторизация при вводе повторных данных,юз эфект на гет запрос
   useEffect(() => {
     if(localStorage.jwt){
     getUserData(localStorage.jwt)
-    .then(res=>{
+    .then(res=> {
       setUserEmail(res.data.email)
       setLoggedIn(true)
       setIsCheckToken(false)
@@ -102,7 +94,7 @@ if (isOpen){
     }
   }, [navigate]);
 
-  //12
+  
   const handleAddPlaceClick = useCallback(() =>{
    setIsEditAddPlacePopupOpen(true)
   },[]) 
@@ -124,7 +116,7 @@ if (isOpen){
    const handleEditProfileClick = useCallback(() =>{
     setIsEditProfilePopupOpen(true);
    },[])
-//12
+
 useEffect(() => {
   if(loggedIn){
     setIsLoadingCard(true)
@@ -139,7 +131,7 @@ useEffect(() => {
         `Ошибка при создании первоначальных данных на странице ${error}`))
 }}, [loggedIn]);
 
-//12
+
   const handleSubmit = useCallback((request, textError)=>{
     setIsSend(true)
     request()
@@ -149,7 +141,7 @@ useEffect(() => {
 
   },[closeAllPopups])
 
-//12
+
   const hendleDeleteSubmit = useCallback (()=> { 
     function makeRequest(){
       return(api.deleteCard(deleteCardId)
@@ -161,7 +153,7 @@ useEffect(() => {
       handleSubmit (makeRequest,'Ошибка при удалении карточки' )
   },[card, deleteCardId, handleSubmit])
 
-  //профиль 12
+  //профиль 
   const handleUpdateUser = useCallback ((userEmail)=> { 
     function makeRequest() {
       return (api.setUserInfo(userEmail)
@@ -172,7 +164,7 @@ useEffect(() => {
     handleSubmit (makeRequest,'Ошибка при редактировании профиля' )
   },[handleSubmit])
 
-  //аватар 12
+  //аватар 
   const handleAvatarPopup = useCallback ((userEmail)=> { 
     function makeRequest() {
       return (api.setAvatarNew(userEmail)
@@ -183,7 +175,7 @@ useEffect(() => {
     handleSubmit (makeRequest,'Ошибка при редактировании аватара ' )
   },[handleSubmit])
  
-  //карточка 12
+  //карточка 
   const handleAddPlaceSubmit = useCallback ((dataCard)=> { 
     function makeRequest() {
       return (api.addCard(dataCard)
@@ -194,7 +186,7 @@ useEffect(() => {
     handleSubmit (makeRequest,'Ошибка при добавлении карточки ' )
   },[card, handleSubmit])
 
- //12 
+//лайки
  const handleLike = useCallback ((card)=> { 
   const isLikes = card.likes.some(element => currentUser._id === element._id)
   if (isLikes){
@@ -213,14 +205,14 @@ useEffect(() => {
  },[currentUser._id])
 
 
- //12 авторизация
+ // авторизация
  function handleLogin(password, email) {
   setIsSend(true)
   authorization(password,email)   
     .then(res => {
    localStorage.setItem('jwt', res.token)
-   setLoggedIn(false)
-   window.scrollTo(0,0)
+   setLoggedIn(true)
+   window.scrollTo(0,0)//скрол чтобы в начале страницы открывалось после входа 
    navigate('/')
     })
     .catch((error) =>{
@@ -231,7 +223,7 @@ useEffect(() => {
     .finally(() => setIsSend(false));
 }
 
-  //12 регистрация
+  // регистрация
   function handleRegister(password, email) {
     setIsSend(true);
     registration(password,email)   
@@ -251,9 +243,11 @@ useEffect(() => {
   }
 
   return (
-//  <SendContex.Provider value={isSend}> 
+
 <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
+       
+<SendContext.Provider value={isSend}>
 <Routes>
 <Route path ='/' element = 
 {<ProtectedRoute
@@ -270,26 +264,30 @@ useEffect(() => {
  loggedIn ={loggedIn}
  isCheckToken={isCheckToken}/>
 }/>
-<Route path ='/sign-up' element = {
+<Route path ='/sign-up' element = { 
   <>
-  <Header name='signup'/>
-  <Main name='signup' isCheckToken={isCheckToken} handeleRegister ={handleRegister}/>
+ 
+  <Header name='signup'/> 
+  <Main name='signup' isCheckToken={isCheckToken} handleRegister ={handleRegister}/>
   </>
 }/>
 
-<Route path ='/sign-in' element = {
+<Route path ='/sign-in' element = {  
   <>
   <Header name='signin'/>
-  <Main name='signin' isCheckToken={isCheckToken} handeleLogin ={handleLogin}/>
+  <Main name='signin' isCheckToken={isCheckToken} handleLogin ={handleLogin}/>
   </>
 }/>
-<Route path ='*' element = {<Navigate to='/' replace />}/>
-</Routes>
- {/* </SendContex.Provider>  */}
 
-        <Footer />
-        {/* <SendContex.Provider> */}
-        {/* //профиль */}
+<Route path ='*' element = {<Navigate to='/' replace />}/> 
+
+</Routes>
+ </SendContext.Provider>
+
+        <Footer/>
+
+ <SendContext.Provider value={isSend}>
+      
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
@@ -297,22 +295,25 @@ useEffect(() => {
           isSend={isSend}
         />
 
-        {/* карточка */}
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           onAddPlace={handleAddPlaceSubmit}
           isSend={isSend}
         />
-        {/* аватар */}
+        
         <EditAvatarPopup
           onUpdateAvatar={handleAvatarPopup}
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           isSend={isSend}
         />
-
-        <PopupWithForm
+        <DeletePopup
+        isOpen={isDeletePopupOpen}
+        onClose={closeAllPopups}
+        onSubmit={hendleDeleteSubmit}
+        />
+        {/* <PopupWithForm
           name="popup_type_delete"
           title="Вы уверены ?"
           titleButton="Да"
@@ -320,20 +321,21 @@ useEffect(() => {
           onClose={closeAllPopups}
           onSubmit={hendleDeleteSubmit}
           isSend={isSend}
-        />
-       {/* </SendContex.Provider> */}
+        /> */}
+</SendContext.Provider>
+
         <ImagePopup
           onClose={closeAllPopups}
           card={selectedCard}
           isOpen={isImgPopup}
         />
-        {/* компонент модального окна,который информирует пользователя об успешной (или не очень) регистрации */}
-        <InfoTooltip>
+       
+        <InfoTooltip
           name={'result'}
           isSuccessful={isSuccessful}
           onClose={closeAllPopups}
           isOpen={isResultOpenPopup}
-        </InfoTooltip>
+        />
       </div>
     </CurrentUserContext.Provider>
   );

@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import useFormValidation from "../../utils/useFormValidation";
+import Input from "../Input/Input";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 export default function EditProfilePopup({
@@ -40,7 +41,7 @@ export default function EditProfilePopup({
       isSend={isSend}
       onSubmit={handleSubmit}
     >
-      <input
+      <Input
         type="text"
         className={`popup__text ${
           isInputValid.profilename === undefined || isInputValid.profilename
@@ -60,7 +61,7 @@ export default function EditProfilePopup({
       <span className="error-message" id="error-profilename">
         {error.profilename}
       </span>
-      <input
+      <Input
         type="text"
         className={`popup__text  popup__text_type_job ${
           isInputValid.profilejob === undefined || isInputValid.profilejob

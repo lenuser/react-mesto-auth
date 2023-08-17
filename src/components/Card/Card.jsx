@@ -33,4 +33,4 @@ const Card = memo (({ card, onCardClick, onDeleteClick }) => {
   );
 })
 
-export default Card
+export default Card;

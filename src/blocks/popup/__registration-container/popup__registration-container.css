@@ -1,0 +1,10 @@
+.popup__registration-container{
+    display: flex;
+    align-items: center;
+    width: 430px;
+    height: 330px;
+    background-color: #fff;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    row-gap: 32px;
+}

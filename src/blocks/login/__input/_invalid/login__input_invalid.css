@@ -1,0 +1,4 @@
+.login__input_invalid.login__input{
+    border-color: red;
+    padding: 0;
+    }

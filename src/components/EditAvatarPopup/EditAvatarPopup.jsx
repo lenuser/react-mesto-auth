@@ -1,8 +1,9 @@
 //import { useRef } from "react";
 import useFormValidation from "../../utils/useFormValidation";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-//import Input from '../Input/Input.jsx'
+import Input from '../Input/Input.jsx'
 import { memo, useEffect } from "react";
+
 
 
 const EditAvatarPopup = memo (({isOpen,onClose,onUpdateAvatar}) => {
@@ -29,12 +30,12 @@ const EditAvatarPopup = memo (({isOpen,onClose,onUpdateAvatar}) => {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <input
-        // className={`popup__text popup__text_type_avatar ${
-        //   isInput.avatar === undefined || isInput.avatar
-        //     ? " "
-        //     : "popup__text_invalid"
-        // }`}
+      <Input
+        className={`popup__text popup__text_type_avatar ${
+          isInputValid.avatar === undefined || isInputValid.avatar
+            ? " "
+            : "popup__text_invalid"
+        }`}
         type="url"
         required
         placeholder="Ссылка на картинку"

@@ -2,12 +2,13 @@ import useFormValidation from "../../utils/useFormValidation"
 import Input from "../Input/Input"
 import SectionLogin from "../SectionLogin/SectionLogin"
 
-export default function Login ({name, handeleLogin}) {
+
+export default function Login ({name, handleLogin}) {
     const { values, error, isValid, isInputValid, handleChange } = useFormValidation()
 
 function onLogin(evt){
     evt.preventDefault()
-    handeleLogin( values.password, values.email )
+    handleLogin( values.password, values.email )
 }
 return (
     <SectionLogin name={name} onSumbit={onLogin} isValid={isValid}>

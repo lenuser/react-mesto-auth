@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
-//import { SendContext } from "../contexts/SendContext.jsx";
-//import './Input.css'
+import SendContext  from "../../contexts/SendContext";
 
 export default function Input  ({name, type, placeholder,minLength, maxLength, isInputValid, value, onChange,error}) {
-    const isSend = useContext()
+    const isSend = useContext(SendContext)
 
     return(
-        <>
-        {name ===  'password' || name ===  'email'}
-        <>
+<>
+        {name ===  'password' || name ===  'email' 
+        ?
+  <>
         <input
         name = {name}
         type={type}
@@ -22,9 +22,9 @@ export default function Input  ({name, type, placeholder,minLength, maxLength, i
         disabled = {isSend}
       />
       <span className={'login__error'}>{error}</span>
-        </>
+ </>
         :
-        <>
+    <>
         <input
         name = {name}
         type={type}
@@ -32,17 +32,13 @@ export default function Input  ({name, type, placeholder,minLength, maxLength, i
         placeholder={placeholder}
         minLength={minLength ? minLength : ''}
         maxLength = {maxLength ? maxLength : ''}
-        className = {`popup__input ${isInputValid === undefined || isInputValid ? '' : 'popup__input_invalid'}`}
+        className = {`popup__text ${isInputValid === undefined || isInputValid ? '' : 'popup__text_invalid'}`}
         onChange={onChange}
         value={value ? value : ''}
         disabled = {isSend}
       />
-      <span className={'popup__error'}>{error}</span>
-        </>
-
-
-
-
-        </>
+      <span className={'error-message'}>{error}</span>
+    </> }
+</>
     )
 }

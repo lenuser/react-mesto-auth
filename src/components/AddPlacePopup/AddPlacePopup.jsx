@@ -27,13 +27,13 @@ useEffect(() => {
       onSubmit={handleSubmit}
       isValid={isValid}
     >
-      <input
+      <Input
         type="text"
-        className={`popup__text ${
-          isInputValid.nameCardsInput === undefined || isInputValid.nameCardsInput
-            ? " "
-            : "popup__text_invalid"
-        }`}
+        // className={`popup__text ${
+        //   isInputValid.nameCardsInput === undefined || isInputValid.nameCardsInput
+        //     ? " "
+        //     : "popup__text_invalid"
+        // }`}
         required
         placeholder="Название"
         name="nameCardsInput"
@@ -46,13 +46,13 @@ useEffect(() => {
         error = {error.nameCardsInput}
         isInputValid = {isInputValid.nameCardsInput}
       />
-      <input
+      <Input
         type="url"
-        className={`popup__text popup__text_type_link ${
-          isInputValid.linkCardsInput === undefined || isInputValid.linkCardsInput
-            ? " "
-            : "popup__text_invalid"
-        }`}
+        // className={`popup__text popup__text_type_link ${
+        //   isInputValid.linkCardsInput === undefined || isInputValid.linkCardsInput
+        //     ? " "
+        //     : "popup__text_invalid"
+        // }`}
         required
         placeholder="Ссылка на картинку"
         name="linkCardsInput"
